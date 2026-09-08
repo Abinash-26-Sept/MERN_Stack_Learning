@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Forgot Password</title>
+  		<style>
+			.container
+			{
+				background-color: white;
+				padding: 10px;
+				margin: 10px;
+				display: flex;
+				justify-content : center;
+				align-items: center;
+			}
+			form
+   			{
+				display : flex;
+				flex-direction: column;
+			}
+			body
+			{
+				display: flex;
+				justify-content : center;
+				align-items: center;
+				background-color: aqua;
+				min-height: 100vh;
+			}
+		</style>
+	</head>
+	<body>
+    <div class="container">
+        <form id="form">
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+            >
+
+            <button type="submit">Submit</button>
+
+            <p id="message"></p>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById("form");
+
+        form.addEventListener("submit", function(event) {
+		console.log(event);
+            event.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const message = document.getElementById("message");
+
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email)) {
+                message.textContent = "Please enter a valid email address.";
+                message.style.color = "red";
+                return;
+            }
+
+            // Password validation
+            const passwordPattern =
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+
+            if (!passwordPattern.test(password)) {
+                message.textContent =
+                    "Password must have 8+ characters, uppercase, lowercase, number, and symbol.";
+                message.style.color = "red";
+                return;
+            }
+
+            message.textContent = "Email and password format are valid!";
+            message.style.color = "green";
+		window.location.href = "Login htme Assestment.html";
+        });
+    </script>
+</body>
+
+</html> 
